@@ -1,0 +1,111 @@
+
+
+<html>
+<head>
+<style type="text/css">
+  #showexisting{
+    visibility: hidden;
+  }
+
+  #shownew{
+    visibility: hidden;
+  }
+
+  #showone{
+    visibility: hidden;
+  } 
+</style>
+<script language="Javascript">
+function hideA()
+{
+
+    document.getElementById("A").style.visibility="hidden";
+    document.getElementById("B").style.visibility="visible";    
+
+}
+
+function hideB()
+{
+    document.getElementById("B").style.visibility="hidden";
+    document.getElementById("A").style.visibility="visible";
+
+}
+
+function showone()
+{
+document.getElementById("showexisting").style.visibility="hidden";
+document.getElementById("shownew").style.visibility="hidden";
+document.getElementById("showone").style.visibility="visible";
+}
+
+function shownew()
+{
+document.getElementById("showone").style.visibility="hidden";
+document.getElementById("showexisting").style.visibility="hidden";
+document.getElementById("shownew").style.visibility="visible";
+}
+
+function showexisting()
+{
+document.getElementById("showone").style.visibility="hidden";
+document.getElementById("shownew").style.visibility="hidden";
+document.getElementById("showexisting").style.visibility="visible";
+}
+</script>
+</head>
+<body>
+
+<input id="onetime" name="element_9" class="element radio" type="radio" value="1" onClick="showone()" />
+<label class="choice" for="element_9_1">One Time Donation</label>
+<input id="existing" name="element_9" class="element radio" type="radio" value="2" onClick="showexisting()"/>
+<label class="choice" for="element_9_2">Donate to Existing Scholarship</label>
+<input id="new" name="element_9" class="element radio" type="radio" value="3" onClick="shownew()"/>
+<label class="choice" for="element_9_3">Start New Scholarship</label>
+
+<div class="show-new" id="shownew">
+<li id="li_1" >
+    <label class="description" for="element_100">Scholarship Name </label>
+    <div>
+      <input id="element_100" name="element_100" class="element text medium" type="text" maxlength="255" value=""/> 
+    </div> 
+    </li>   <li id="li_2" >
+    <label class="description" for="element_200">Criteria </label>
+    <div>
+      <textarea id="element_200" name="element_200" class="element textarea medium"></textarea> 
+    </div> 
+    </li>
+</div>
+
+<div class="show-new" id="showexisting">
+<li id="li_1" >
+    <label class="description" for="element_100">Scholarship Name </label>
+    <div>
+      <input id="element_100" name="element_100" class="element text medium" type="text" maxlength="255" value=""/> 
+    </div> 
+    </li>   <li id="li_2" >
+    <label class="description" for="element_200">Amount </label>
+    <div>
+      <textarea id="element_200" name="element_200" class="element textarea medium"></textarea> 
+    </div> 
+    </li>
+</div>
+
+<div class="show-new" id="showone">
+<li id="li_1" >
+    <label class="description" for="element_100">Amount </label>
+    <div>
+      <input id="element_100" name="element_100" class="element text medium" type="text" maxlength="255" value=""/> 
+    </div> 
+    </li>   <li id="li_2" >
+    <label class="description" for="element_200">Criteria </label>
+    <div>
+      <textarea id="element_200" name="element_200" class="element textarea medium"></textarea> 
+    </div> 
+    </li>
+</div>
+<div id="resulthere">
+
+</div>
+
+</body>
+</html>
