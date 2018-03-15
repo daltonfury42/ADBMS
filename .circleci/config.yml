@@ -1,14 +1,14 @@
 version: 2
 jobs:
- build:
-   machine: true
-   steps:
-     - checkout
+  build:
+    docker:
+      - image: debian:stretch
+    steps:
+      - checkout
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+      - run:
+          name: Print the Current Time
+          command: date
 
-     # test
- - run: |
-        docker build -t adbms-site .
-#        docker run -p 80:80 adbms-site
-        docker login --username=$HEROKU_USERNAME --password=$HEROKU_API_KEY registry.heroku.com
-         docker tag aspnetapp registry.heroku.com/$HEROKU_APP_NAME/web
-         docker push registry.heroku.com/$HEROKU_APP_NAME/web
