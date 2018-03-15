@@ -29,8 +29,6 @@ ADD app /var/www/site/app
 
 # Update the default apache site with the config we created.
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
-ONBUILD RUN sed -i "s/8080/${PORT}/" /etc/apache2/sites-enabled/000-default.conf
-ONBUILD RUN echo Listen ${PORT} >> /etc/apache2/ports.conf 
 ADD SJET.sql /root/SJET.sql
 ADD init.sh /root/init.sh
 
