@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sed -i "s/8080/$1/" /etc/apache2/sites-enabled/000-default.conf; 
+echo Listen $1 >> /etc/apache2/ports.conf 
 
 service mysql start; 
 

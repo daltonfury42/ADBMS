@@ -33,6 +33,5 @@ ADD SJET.sql /root/SJET.sql
 ADD init.sh /root/init.sh
 
 # By default, simply start apache.
-CMD bash /root/init.sh
+CMD bash /root/init.sh $PORT
 
-ONBUILD RUN sed -i "s/8080/${PORT}/" /etc/apache2/sites-enabled/000-default.conf; echo Listen ${PORT} >> /etc/apache2/ports.conf 
