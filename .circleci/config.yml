@@ -5,10 +5,7 @@ jobs:
       - image: debian:stretch
     steps:
       - checkout
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
+      - run: |
+            docekr info
+            docker build -t adbms-site .
 
