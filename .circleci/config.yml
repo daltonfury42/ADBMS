@@ -6,6 +6,6 @@ jobs:
     steps:
       - checkout
       - run: |
-            docekr info
+            docker info
             docker build -t adbms-site .
 
