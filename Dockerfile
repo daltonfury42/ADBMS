@@ -22,8 +22,6 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
-EXPOSE 80
-
 # Copy site into place.
 ADD app /var/www/site/app
 
@@ -33,5 +31,5 @@ ADD SJET.sql /root/SJET.sql
 ADD init.sh /root/init.sh
 
 # By default, simply start apache.
-CMD bash /root/init.sh $PORT
+CMD /root/init.sh $PORT
 
