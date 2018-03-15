@@ -1,9 +1,8 @@
 #!/bin/sh
 
-echo $1 > /root/test
+echo "work without root" > /tmp/test
+echo "work with root" > /root/test
 
-sed -i "s/8080/$1/" /etc/apache2/sites-enabled/000-default.conf; 
-echo Listen $1 >> /etc/apache2/ports.conf 
 
 service mysql start; 
 
