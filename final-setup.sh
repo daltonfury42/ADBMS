@@ -8,7 +8,7 @@ sed -i "s/80/$PORT/" /etc/httpd/conf/extra/httpd-vhosts.conf
 httpd -k restart
 echo Changed ports and restarted apache
 
-mysqld
+#mysqld
 
 function waitForMysql {
     while [[ $(mysqladmin ping --silent) != "mysqld is alive" ]]; do
@@ -20,7 +20,7 @@ function waitForMysql {
 }
 
 echo "Waiting for mysql to start"
-sleep 10
+sleep 20
 #waitForMysql
 echo "mysql started"
 
