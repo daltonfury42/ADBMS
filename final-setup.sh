@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+echo "Starting Servers"
+start-servers 
+echo "Done"
+
 #export PORT=${1:-443}
 #export $MYSQL_USER=$2
 #export $MYSQL_PASSWORD=$3
