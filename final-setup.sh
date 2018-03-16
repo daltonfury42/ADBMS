@@ -4,9 +4,7 @@ echo "Starting Servers"
 start-servers 
 echo "Done"
 
-#export PORT=${1:-443}
-#export $MYSQL_USER=$2
-#export $MYSQL_PASSWORD=$3
+echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
 
 function waitForMysql {
     while [[ $(mysqladmin ping --silent) != "mysqld is alive" ]]; do
@@ -17,9 +15,9 @@ function waitForMysql {
     printf "$lf"
 }
 
+echo "Waiting for mysql to start"
 waitForMysql
-
-echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
+echo "mysql started"
 
 sed -i "s/443/$PORT/" /etc/httpd/conf/extra/httpd-ssl.conf 
 httpd -k restart
