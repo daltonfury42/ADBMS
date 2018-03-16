@@ -2,6 +2,7 @@
 
 echo "Starting Servers"
 start-servers 
+setup-mysql-user
 echo "Done"
 
 echo "Manually starting mysql"
