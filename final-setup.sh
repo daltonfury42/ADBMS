@@ -5,8 +5,7 @@ start-servers
 echo "Done"
 
 echo "Manually starting mysql"
-cd /usr && /usr/bin/mysqld_safe --datadir=/var/lib/mysql
-sleep 1 && nohup /usr/bin/mysqld '--basedir=/usr' '--datadir=/var/lib/mysql' '--plugin-dir=/usr/lib64/mysql/plugin' '--user=mysql' '--log-error=/var/lib/mysql/log.err' '--socket=/run/mysqld/mysqld.sock' '--port=3306'
+mysqld
 echo "Done"
 
 echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
