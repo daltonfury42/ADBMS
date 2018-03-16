@@ -11,7 +11,7 @@ echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
 sed -i "s/443/$PORT/" /etc/httpd/conf/extra/httpd-ssl.conf 
 httpd -k restart
 echo Changed ports and restarted apache
-
+exit
 function waitForMysql {
     while [[ $(mysqladmin ping --silent) != "mysqld is alive" ]]; do
         printf .
