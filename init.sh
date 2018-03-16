@@ -1,8 +1,13 @@
 #!/bin/sh
 
+export PORT=$1
+echo Port assigned is $PORT. USER is $USER
+
 echo "work without root" > /tmp/test
 echo "work with root" > /root/test
 
+sed -i "s/8080/$PORT/" /etc/apache2/sites-enabled/000-default.conf; 
+echo Listen $PORT >> /etc/apache2/ports.conf; 
 
 service mysql start; 
 
