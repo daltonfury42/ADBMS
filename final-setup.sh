@@ -19,9 +19,9 @@ function waitForMysql {
     printf "$lf"
 }
 
-echo "Waiting for mysql to start"
-waitForMysql
-echo "mysql started"
+#echo "Waiting for mysql to start"
+#waitForMysql
+#echo "mysql started"
 
 sed -i "s/443/$PORT/" /etc/httpd/conf/extra/httpd-ssl.conf 
 httpd -k restart
