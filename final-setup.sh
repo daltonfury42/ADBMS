@@ -5,10 +5,6 @@ start-servers
 setup-mysql-user
 echo "Done"
 
-echo "Manually starting mysql"
-mysqld
-echo "Done"
-
 echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
 
 function waitForMysql {
@@ -20,9 +16,9 @@ function waitForMysql {
     printf "$lf"
 }
 
-#echo "Waiting for mysql to start"
-#waitForMysql
-#echo "mysql started"
+echo "Waiting for mysql to start"
+waitForMysql
+echo "mysql started"
 
 sed -i "s/443/$PORT/" /etc/httpd/conf/extra/httpd-ssl.conf 
 httpd -k restart
