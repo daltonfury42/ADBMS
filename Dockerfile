@@ -1,35 +1,13 @@
-FROM ubuntu:latest
+FROM greyltc/lamp
 MAINTAINER Dalton Fury <daltonfury42@disroot.org>
 
-RUN apt-get update
-RUN apt-get -y upgrade
+ENV MYSQL_USER ${MY_SQL_USER:-testuser}
+ENV MYSQL_PASSWORD ${MY_SQL_PASSWORD:-testpass}
+ENV PORT ${PORT:-443} 
 
-RUN echo "mysql-server mysql-server/root_password password strangehat" | debconf-set-selections
-RUN echo "mysql-server mysql-server/root_password_again password strangehat" | debconf-set-selections
+ADD http /srv/http/
 
-# Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 libapache2-mod-php php-mysql php-gd php-pear php-mcrypt php-curl php-ldap curl lynx-cur mysql-client mysql-server
+ADD SJET.sql /root
+ADD final-setup.sh /usr/sbin/final-setup
 
-
-# Enable apache mods.
-RUN phpenmod openssl
-RUN a2enmod rewrite
-
-# Manually set up the apache environment variables
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
-ENV APACHE_LOCK_DIR /var/lock/apache2
-ENV APACHE_PID_FILE /var/run/apache2.pid
-
-# Copy site into place.
-ADD app /var/www/site/app
-
-# Update the default apache site with the config we created.
-ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
-ADD SJET.sql /root/SJET.sql
-ADD init.sh /root/init.sh
-
-# By default, simply start apache.
-CMD /root/init.sh $PORT
-
+CMD start-servers; setup-mysql-user; final-setup $PORT $MYSQL_USER $MYSQL_PASSWORD; sleep infinity
