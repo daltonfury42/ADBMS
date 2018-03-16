@@ -3,7 +3,8 @@
 echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
 
 
-sed -i "s/443/$PORT/" /etc/httpd/conf/extra/httpd-ssl.conf 
+sed -i "s/80/$PORT/" /etc/httpd/conf/httpd.conf 
+sed -i "s/80/$PORT/" /etc/httpd/conf/extra/httpd-vhosts.conf
 httpd -k restart
 echo Changed ports and restarted apache
 
