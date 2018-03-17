@@ -20,8 +20,8 @@ function waitForMysql {
 }
 
 echo "Waiting for mysql to start"
-sleep 20
-#waitForMysql
+#sleep 20
+waitForMysql
 echo "mysql started"
 
 
