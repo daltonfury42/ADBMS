@@ -9,6 +9,6 @@ ENV PORT ${PORT:-8080}
 
 ADD final-php.sh /usr/sbin/final-php
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
+RUN docker-php-ext-install pdo pdo_mysql
 
 CMD final-php
