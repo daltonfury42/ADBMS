@@ -9,6 +9,6 @@ ENV PORT ${PORT:-8080}
 
 ADD final-php.sh /usr/sbin/final-php
 
-RUN apt-get -y install php-mysql
+RUN apt-get update; apt-get -y install php-mysql
 
 CMD final-php
