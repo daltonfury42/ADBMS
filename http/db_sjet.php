@@ -11,6 +11,6 @@ $db = substr($url["path"], 1);
 
 // Create connection
 //$conn = mysqli_connect($servername, $username, $password, $db);
-$conn = new mysqli($server, $username, $password, $db);
+$conn = new mysqli($servername, $username, $password, $db);
  if(!$conn)echo "hi";
 ?>
