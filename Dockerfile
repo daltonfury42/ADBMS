@@ -9,5 +9,6 @@ ADD final-php.sh /usr/sbin/final-php
 ADD database/db.sql /root/
 
 RUN docker-php-ext-install mysqli
+RUN apt-get update; apt-get -y  install mysql-client
 
 CMD final-php
