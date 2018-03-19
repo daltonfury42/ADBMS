@@ -2,8 +2,8 @@
 
 #Parsing DB Cedientials from Heroku //TODO enclose in an if
 IFS=:@/ read uname pass host dbname<<< ${CLEARDB_DATABASE_URL:8:-15}
-#dumping the DB //TODO check if file exists
-mysql --user=$uname --password=$pass --host=$host $dbname < /root/db.mysql
+#dumping the DB //TODO check if file exists //TODO check if the database already exists on ClearDB
+mysql --user=$uname --password=$pass --host=$host $dbname < /root/db.sql
 
 echo Changing Apache port to $PORT
 
