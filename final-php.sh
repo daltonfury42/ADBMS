@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-echo PORT=$PORT, MY_SQL_USER=$MY_SQL_USER MY_SQL_PASSWORD=$MY_SQL_PASSWORD
+#Parsing DB Cedientials from Heroku //TODO enclose in an if
+IFS=:@/ read uname pass host dbname<<< ${CLEARDB_DATABASE_URL:8:-15}
+#dumping the DB //TODO check if file exists
+mysql --user=$uname --password=$pass --host=$host $dbname < database/db.mysql
+
+echo Changing Apache port to $PORT
 
 sed -i "s/testuser/$MY_SQL_USER/" /var/www/html/db_sjet.php
 sed -i "s/testpass/$MY_SQL_PASSWORD/" /var/www/html/db_sjet.php
